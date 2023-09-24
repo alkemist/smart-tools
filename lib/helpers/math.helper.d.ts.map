@@ -1,0 +1,1 @@
+{"version":3,"file":"math.helper.d.ts","sourceRoot":"src/","sources":["helpers/math.helper.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,QAAQ,EAAE,MAAM,oBAAoB,CAAC;AAE9C,8BAAsB,UAAU;IAC9B,MAAM,CAAC,QAAQ,CAAC,KAAK,EAAE,QAAQ,GAAG,MAAM;CAMzC"}
