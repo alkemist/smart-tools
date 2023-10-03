@@ -1,4 +1,4 @@
-import { LogInterface } from '../models/index.js';
+import { CONSOLE_LOG_STYLES, LogInterface } from '../models/index.js';
 import { TypeHelper } from './type.helper.js';
 import { TreeHelper } from './tree.helper.js';
 
@@ -10,32 +10,40 @@ export abstract class ConsoleHelper {
   ) {
     const parentLog = ConsoleHelper.format(parent);
 
-    ConsoleHelper.log(
+    console.group(
       `%c ${ parentLog.title }`,
       colors && colors[0] ? colors[0] : '',
-      true,
-      ...parentLog.data ?? []
+      ...(parentLog.data ?? []),
     );
 
     children.forEach((child, index) => {
         const childLog = ConsoleHelper.format(child);
 
-        ConsoleHelper.log(
+        console.log(
           `%c ${ childLog.title }`,
           colors && colors[index + 1] ? colors[index + 1] : '',
-          false,
-          ...childLog.data ?? []
-        )
+          ...(childLog.data ?? []),
+        );
       }
     )
 
     console.groupEnd();
   }
 
-  static log(title: string, style: string, isGroup: boolean = false, ...data: any[]) {
-    const fn = isGroup ? console.group : console.log;
+  static logBlue(title: string, ...data: any[]) {
+    console.log(`%c ${ title }`, CONSOLE_LOG_STYLES.blue, ...data);
+  }
 
-    fn.call(console, `%c ${ title }`, style, ...data);
+  static logGreen(title: string, ...data: any[]) {
+    console.log(`%c ${ title }`, CONSOLE_LOG_STYLES.green, ...data);
+  }
+
+  static logGrey(title: string, ...data: any[]) {
+    console.log(`%c ${ title }`, CONSOLE_LOG_STYLES.grey, ...data);
+  }
+
+  static logRed(title: string, ...data: any[]) {
+    console.log(`%c ${ title }`, CONSOLE_LOG_STYLES.red, ...data);
   }
 
   private static format(log: LogInterface | string | any): LogInterface {

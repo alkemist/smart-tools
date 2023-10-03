@@ -1,4 +1,4 @@
-import { computed, DestroyRef, Signal, signal } from "@angular/core";
+/*import { computed, DestroyRef, Signal, signal } from "@angular/core";
 import { takeUntilDestroyed, toObservable } from "@angular/core/rxjs-interop";
 
 class LoaderModel {
@@ -66,4 +66,4 @@ export class SmartLoader {
 
     return loader;
   }
-}
+}*/
