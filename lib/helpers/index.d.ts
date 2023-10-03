@@ -1,4 +1,5 @@
 export * from './array.helper.js';
+export * from './console.helper.js';
 export * from './date.helper.js';
 export * from './math.helper.js';
 export * from './object.helper.js';
