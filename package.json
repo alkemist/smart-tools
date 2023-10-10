@@ -1,6 +1,6 @@
 {
   "name": "@alkemist/smart-tools",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "Smart tools",
   "main": "lib/index.min.mjs",
   "type": "module",
@@ -30,7 +30,7 @@
   "keywords": [
     "typescript"
   ],
-  "author": "Jérémy ACHAIN",
+  "author": "Jaden ACHAIN",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/alkemist/smart-tools/issues"

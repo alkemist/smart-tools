@@ -37,7 +37,7 @@ class ParentTest {
     public propertyOverride?: string,
     public propertyUndefined = undefined,
     public propertyNull = null,
-    public propertyZero = 0,
+    public readonly propertyZero = 0,
     private propertyOne = 1,
     private propertyTwo = 2,
     private propertyTwoPointOne = 2.1,

@@ -42,6 +42,24 @@ describe("CompareHelper", () => {
     }
   );
 
+  describe("Deep clone", () => {
+    class ClassWithReadonly {
+      readonly x = 1;
+      readonly coord: {
+        readonly x: number
+      } = { x: 2 }
+    }
+
+    it("Should deep clone readonly properties", () => {
+      expect(TypeHelper.deepClone(new ClassWithReadonly())).toEqual({
+        x: 1,
+        coord: {
+          x: 2
+        }
+      });
+    });
+  });
+
   describe("Get cycles", () => {
     const x = {
       cycle: null as any,
