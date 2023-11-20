@@ -1,5 +1,5 @@
 import { StringHelper } from './string.helper.js';
-import { KeyValue, ValueKey } from '../models/index.js';
+import { KeyValue, ValueKey, ValueRecordKeys } from '../models/index.js';
 
 export abstract class ArrayHelper {
   static sortBy<T>(array: T[], field: string): T[] {
@@ -22,7 +22,7 @@ export abstract class ArrayHelper {
   }
 
   static listToRecord<
-    T extends { [K in keyof T]: string | number },
+    T extends ValueRecordKeys<T, ValueKey>,
     K extends keyof T
   >(array: T[], selector: K): Record<T[K], T> {
     return array.reduce(
