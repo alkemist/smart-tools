@@ -7,14 +7,13 @@ export class SmartMap<V, K extends ValueKey = string> extends Map<K, V> {
 
   constructor(entries: [ K, V ][] = []) {
     super(null);
-    entries.forEach(entry => this.set(entry[0], entry[1]))
-    this._keys = entries.map(value => value[0]);
-    this._values = entries.map(value => value[1]);
+    entries
+      .forEach(entry => this.set(entry[0], entry[1]))
   }
 
-  static fromRecord<K extends ValueKey, V>(record: Record<K, V>) {
-    return new SmartMap<V, K>(
-      Object.entries(record) as [ K, V ][]
+  static fromRecord<V>(record: Record<string, V>) {
+    return new SmartMap<V, string>(
+      Object.entries(record) as [ string, V ][]
     );
   }
 
@@ -24,7 +23,7 @@ export class SmartMap<V, K extends ValueKey = string> extends Map<K, V> {
     );
   }
 
-  static fromEnum<E extends Record<ValueKey, any>, K = keyof E, V = E[keyof E]>(enumValue: E) {
+  static fromEnum<E extends Record<ValueKey, any>, V = E[keyof E]>(enumValue: E) {
     return SmartMap.fromKeyValues(
       ArrayHelper.enumToArray(enumValue) as KeyValue<string, V>[]
     );
@@ -69,7 +68,7 @@ export class SmartMap<V, K extends ValueKey = string> extends Map<K, V> {
     }))
   }
 
-  map(predicate: (value: V, index: K, indexNumber: number) => V) {
+  map<T>(predicate: (value: V, index: K, indexNumber: number) => T) {
     return this._keys.map((key, index) =>
       predicate(this._values[index], key, index)
     )
@@ -84,6 +83,12 @@ export class SmartMap<V, K extends ValueKey = string> extends Map<K, V> {
   find(predicate: (value: V, index: K, indexNumber: number) => boolean) {
     return this._values.find((value, index) =>
       predicate(value, this._keys[index], index)
+    );
+  }
+
+  findKey(predicate: (value: V, index: K, indexNumber: number) => boolean) {
+    return this._keys.find((key, index) =>
+      predicate(this._values[index], key, index)
     );
   }
 

@@ -33,13 +33,12 @@ export abstract class ArrayHelper {
     )
   }
 
-  static enumToArray<V extends ValueKey = ValueKey, K extends ValueKey = ValueKey>(enumValue: Record<V, K>): KeyValue<K, V>[] {
-    // Enum is a inversed record
-    const values = Object.keys(enumValue) as V[];
+  static enumToArray<V extends ValueKey>(enumValue: Record<string, V>): KeyValue<string, V>[] {
+    const keys = Object.keys(enumValue)
+      .filter((key) => !new RegExp(/^\d+$/).test(key));
 
-    return values.map((value: V) => {
-      const key = enumValue[value] as K;
-      return { key, value }
+    return keys.map((key) => {
+      return { key, value: enumValue[key] }
     });
   }
 }
