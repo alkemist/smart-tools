@@ -40,4 +40,7 @@ export abstract class StringHelper {
     return str;
   };
 
+  static capitalize(str: string): string {
+    return str[0].toUpperCase() + str.slice(1);
+  }
 }
