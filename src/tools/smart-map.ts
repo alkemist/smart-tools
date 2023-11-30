@@ -23,9 +23,9 @@ export class SmartMap<V, K extends ValueKey = string> extends Map<K, V> {
     );
   }
 
-  static fromEnum<E extends Record<ValueKey, any>, V = E[keyof E]>(enumValue: E) {
+  static fromEnum<E extends Record<ValueKey, any>, V = E[keyof E]>(enumValue: E, revert: boolean = false) {
     return SmartMap.fromKeyValues(
-      ArrayHelper.enumToArray(enumValue) as KeyValue<string, V>[]
+      ArrayHelper.enumToArray(enumValue, revert) as KeyValue<string, V>[]
     );
   }
 

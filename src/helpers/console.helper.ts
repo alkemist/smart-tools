@@ -14,17 +14,17 @@ export abstract class ConsoleHelper {
       parentLog.title,
       colors && colors[0] ? colors[0] : '',
       true,
-      ...parentLog.data ?? []
+      parentLog.data ?? []
     );
 
     children.forEach((child, index) => {
         const childLog = ConsoleHelper.format(child);
 
         ConsoleHelper.log(
-          childLog.title,
+          '  ' + childLog.title,
           colors && colors[index + 1] ? colors[index + 1] : '',
           false,
-          ...childLog.data ?? []
+          childLog.data ?? []
         )
       }
     )
@@ -32,10 +32,10 @@ export abstract class ConsoleHelper {
     console.groupEnd();
   }
 
-  static log(title: string, style: string, isGroup: boolean = false, ...data: any[]) {
+  static log(title: string, style: string, isGroup: boolean = false, data: any[]) {
     const fn = isGroup ? console.group : console.log;
 
-    fn.call(console, `%c ${ title }`, style, ...data);
+    fn.call(console, `%c ${ title }`, style, data);
   }
 
   private static format(log: LogInterface | string | any): LogInterface {

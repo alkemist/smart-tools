@@ -1,6 +1,6 @@
 {
   "name": "@alkemist/smart-tools",
-  "version": "1.1.11",
+  "version": "1.1.18",
   "description": "Smart tools",
   "main": "lib/index.min.mjs",
   "type": "module",
@@ -11,7 +11,6 @@
     "dist": "rm -rf dist/* && tsc --project tsconfig.dist.json",
     "def": "rm -rf lib/* && tsc --project tsconfig.def.json",
     "prepublishOnly": "yarn test && npm run dist && npm run def && webpack",
-    "publishFirst": "npm publish --access=public",
     "test": "jest"
   },
   "files": [
@@ -22,6 +21,7 @@
     "url": "git+https://github.com/alkemist/smart-tools.git"
   },
   "publishConfig": {
+    "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "engines": {
@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/alkemist/smart-tools#readme",
   "devDependencies": {
-    "jest": "^29.5.0",
+    "jest": "^29.7.0",
     "jest-cli": "^29.5.0",
     "jest-extended": "^4.0.0",
     "terser-webpack-plugin": "^5.3.9",
