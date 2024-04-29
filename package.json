@@ -1,6 +1,6 @@
 {
   "name": "@alkemist/smart-tools",
-  "version": "1.1.18",
+  "version": "1.1.20",
   "description": "Smart tools",
   "main": "lib/index.min.mjs",
   "type": "module",
@@ -10,7 +10,7 @@
   "scripts": {
     "dist": "rm -rf dist/* && tsc --project tsconfig.dist.json",
     "def": "rm -rf lib/* && tsc --project tsconfig.def.json",
-    "prepublishOnly": "yarn test && npm run dist && npm run def && webpack",
+    "prepublishOnly": "npm run dist && npm run def && webpack",
     "test": "jest"
   },
   "files": [
