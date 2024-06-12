@@ -1,6 +1,6 @@
 {
   "name": "@alkemist/smart-tools",
-  "version": "1.1.20",
+  "version": "1.1.21",
   "description": "Smart tools",
   "main": "lib/index.min.mjs",
   "type": "module",
