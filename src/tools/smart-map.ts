@@ -33,6 +33,15 @@ export class SmartMap<V, K extends ValueKey = string> extends Map<K, V> {
     return <V>super.get(key);
   }
 
+  override delete(key: K): boolean {
+    const keyIndex = this._keys.indexOf(key);
+    if(keyIndex > -1) {
+      this._keys.splice(keyIndex, 1)
+      this._values.splice(keyIndex, 1)
+    }
+    return super.delete(key);
+  }
+
   override set(key: K, value: V): this {
     if (this.has(key)) {
       const keyIndex = this._keys.indexOf(key);
