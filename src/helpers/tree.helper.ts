@@ -50,7 +50,7 @@ export abstract class TreeHelper {
       }
     }
 
-    return value
+    return TypeHelper.deepClone(value)
   }
 
   /**
