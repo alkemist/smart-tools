@@ -110,4 +110,21 @@ export class SmartMap<V, K extends ValueKey = string> extends Map<K, V> {
     )
     return newSmartMap;
   }
+
+  sort(predicate:
+           (
+               a: {value: V, index: K},
+               b: {value: V, index: K},
+            ) => number) {
+    const newSmartMap = new SmartMap<V, K>();
+    this._keys.sort((aKey, bKey) =>
+      predicate(
+          {value: this.get(aKey), index: aKey},
+          {value: this.get(bKey), index: bKey}
+      )
+    ).forEach(
+        key => newSmartMap.set(key, this.get(key))
+    )
+    return newSmartMap;
+  }
 }
