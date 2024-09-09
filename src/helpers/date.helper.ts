@@ -24,4 +24,10 @@ export abstract class DateHelper {
     const lastUpdatedTime = new Date(date).getTime();
     return Math.abs(Math.round((dateTime - lastUpdatedTime) / (1000 * 60 * 60)));
   }
+
+  static secondsToHHMMSS(seconds: number): string {
+    return seconds<3600
+      ? new Date(seconds * 1000).toISOString().substring(14, 19).replace(':', 'm ') + 's'
+      : new Date(seconds * 1000).toISOString().substring(11, 16).replace(':', 'h ') + 'm'
+  }
 }
