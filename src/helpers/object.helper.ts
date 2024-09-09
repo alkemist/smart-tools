@@ -15,4 +15,22 @@ export abstract class ObjectHelper {
       return result;
     }, {} as Record<string, V>)
   }
+
+  static filterByAllowedProperties<T>(obj: T, allowedProperties: (string | number)[]): Partial<T> {
+    return Object.keys(obj as Record<(string | number), any>)
+        .filter(key => allowedProperties.includes(key))
+        .reduce((obj, key) => ({
+          ...obj,
+          [key]: obj[(key as keyof T)]
+        }), {} as Partial<T>);
+  }
+
+  static filterByRejectedProperties<T>(obj: T, rejectedProperties: (string | number)[]): Partial<T> {
+    return Object.keys(obj as Record<(string | number), any>)
+        .filter(key => !rejectedProperties.includes(key))
+        .reduce((obj, key) => ({
+          ...obj,
+          [key]: obj[(key as keyof T)]
+        }), {} as Partial<T>);
+  }
 }
